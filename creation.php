@@ -1,6 +1,6 @@
 <?php 
 include 'bdd.php';
-include "creation.phtml";
+
 
 if($_POST && $_GET){
 
@@ -49,7 +49,6 @@ if($_POST && $_GET){
             echo("Erreur : Cette discussion existe déjà, merci de lui donner un nouveau nom");
         }
 
-
     }
 }
-
+include "creation.phtml";

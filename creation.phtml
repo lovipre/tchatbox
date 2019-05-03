@@ -12,7 +12,7 @@
 <body>
     <form class="form-access" method="post" action="creation.php?id=<?= $_GET['id']; ?>">
         <h1><i class="fas fa-lock"></i> Création d'une discussion</h1>
-        <p id="fail" class="hide"></p>
+        <input type="hidden" id="fail" value="message erreur"></p>
         <input type="text" id="inputIdRoom" name="inputIdRoom" placeholder="Nom de la Discussion">
 
         <button type="submit" id="rejoindre">Créer salle</button>
