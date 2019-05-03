@@ -11,12 +11,14 @@
 </head>
 <body>
     <form class="form-access">
-        <h1><i class="fas fa-lock"></i> Création d'une discussion</h1>
+        <h1><i class="fas fa-lock"></i> Connexion</h1>
         <p id="fail" class="hide"></p>    
-        <input type="text" id="inputIdRoom" name="inputIdRoom" required autofocus>
+        <input type="text" id="inputLogin" name="inputLogin" placeholder="Login" required autofocus>
 
-        <button type="submit" id="rejoindre">Créer salle</button>
-        <a href="rejoindre.php" id="creation">Rejoindre discussion</a>
+        <input type="password" id="inputPassword" name="inputPassword" placeholder="Password" required>
+
+        <button type="submit" id="connect">Connexion</button>
+        <a href="inscription.php" id="inscription">Inscription</a>
     </form>
     <script src="js/jquery-3.4.0.min.js"></script>
     <script src="js/main.js"></script>
