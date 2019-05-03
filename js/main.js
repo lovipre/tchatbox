@@ -30,33 +30,54 @@ function testlogs(e){
 }
 function inscription(e){
     e.preventDefault();
+    $('#fail').addClass('hide');
     if ($('#inputPassword').val() == $('#cinputPassword').val())
     {
         $.ajax({
             url: 'validation.php',
             method: 'post',
-            data: {login: $('#inputLogin').val(), email: $('#inputEmail').val(), password: $('#inputPassword').val(), cpassword: $('#cinputPassword').val() }, 
+            data: {login: $('#inputLogin').val(), testemail: $('#inputEmail').val()}, 
             dataType: 'json', 
             success: function(data){
                 if (data) 
                 {
-                    if (data.validation == false)
+                    if (data.result == true)
                     {
-    
-                        $('.form-access').attr('class','hide');
-                        $('body').prepend('<p id="success">Inscritpion réussi</p>');
-                        setTimeout(function(){
-                            window.location.href = "creation.php?id="+data.id;
-                        }, 3000); 
-                    }
-                    else if (data.validation == true)
-                    {
-                        $('#fail').text('Ce compte existe déjà');
+                        $('#fail').text('Un compte existe déjà avec cette adresse mail ou ce pseudo');
                         $('#fail').removeClass('hide');
-                    }  
+                    }
+                    else 
+                    {
+                        $.ajax({
+                            url: 'validation.php',
+                            method: 'post',
+                            data: {login: $('#inputLogin').val(), email: $('#inputEmail').val(), password: $('#inputPassword').val(), cpassword: $('#cinputPassword').val() }, 
+                            dataType: 'json', 
+                            success: function(data){
+                                if (data) 
+                                {
+                                    if (data.validation == false)
+                                    {
+                    
+                                        $('.form-access').attr('class','hide');
+                                        $('body').prepend('<p id="success">Inscritpion réussi</p>');
+                                        setTimeout(function(){
+                                            window.location.href = "creation.php?id="+data.id;
+                                        }, 3000); 
+                                    }
+                                    else if (data.validation == true)
+                                    {
+                                        $('#fail').text('Ce compte existe déjà');
+                                        $('#fail').removeClass('hide');
+                                    }  
+                                  }
+                            }
+                        });
+                    }
                   }
             }
         });
+        
     }
     else
     {

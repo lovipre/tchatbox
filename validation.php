@@ -19,7 +19,7 @@ function hashPassword($password){
 function verifyPassword($password, $hashPassword){
     return crypt($password, $hashPassword) == $hashPassword;
 }
-if (array_key_exists('login', $_POST) && array_key_exists('password', $_POST) )
+if (array_key_exists('login', $_POST) && array_key_exists('testemail', $_POST))
 {
     $requete = $pdo->prepare("
     SELECT
@@ -27,7 +27,28 @@ if (array_key_exists('login', $_POST) && array_key_exists('password', $_POST) )
     FROM
     `User`
     WHERE
-    `Pseudo` = ?  
+    `Email` = ? OR `Pseudo` = ?  
+        ");
+    $requete->execute([$_POST['testemail'],$_POST['login']]);
+    $user = $requete->fetch();
+
+    if (empty($user) == false)
+    {
+        $data = ["result"=> true];
+        echo json_encode($data);
+        exit;
+    }
+}
+if (array_key_exists('login', $_POST) && array_key_exists('password', $_POST) )
+{
+
+    $requete = $pdo->prepare("
+    SELECT
+    *
+    FROM
+    `User`
+    WHERE
+    `Pseudo` = ? 
         ");
     $requete->execute([$_POST['login']]);
     $user = $requete->fetch();
