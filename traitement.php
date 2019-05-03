@@ -10,7 +10,8 @@ if (empty($_POST) == false)
     `Id_Salle`)
     VALUES(?, ?, ?)
     ");
-    $requete->execute([$_POST['message'],$id=4,$index=1]);
+    $requete->execute([$_POST['message'],$_POST['user'],$_POST['salle']]);
+    $lastId = $pdo->lastInsertId();
     $requete = $pdo->prepare("
     SELECT
     u.Pseudo,
@@ -22,10 +23,10 @@ if (empty($_POST) == false)
     INNER JOIN
     `Contenu` c ON c.Id_Auteur = u.Id
     WHERE
-    c.Id_Salle = ?
+    c.Id_Salle = ? AND c.Id = ?
         ");
-    $requete->execute([$index=1]);
-    $user = $requete->fetchAll();
+    $requete->execute([$_POST['salle'],$lastId]);
+    $user = $requete->fetch();
     $data = ["user"=> $user];
     echo json_encode($data);
 }

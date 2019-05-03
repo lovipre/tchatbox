@@ -12,6 +12,15 @@
 <body>
     <div id="messages">
                 <!-- les messages du tchat -->
+            <?php for($i = 0; $i<count($tab); $i++): ?>
+            <?php if($tab[$i]['Id'] == $_GET['id_User']): ?>
+                <p class="gauche"><?= $tab[$i]['Dialogue'] ?></p>
+                <p class="gauche">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
+            <?php else: ?>
+                <p class="droite"><?= $tab[$i]['Dialogue'] ?></p>
+                <p class="droite">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
+            <?php endif; ?>
+            <?php endfor; ?>
     </div>
 
     <form method="POST" action="traitement.php">

@@ -23,9 +23,6 @@ if($_POST && $_GET){
 
         //on récupère les infos retournées par la BDD sous forme de tableau 
         $result = $requete->fetch();
-
-
-        
         //Si le résultat n'est pas un tableau vide
         if (empty($result) == true){
 

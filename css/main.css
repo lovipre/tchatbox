@@ -36,4 +36,8 @@ a {
     height: 500px;
     box-shadow: 0 0 5px black;
     margin-bottom: 3%;
+    overflow: auto;
+}
+.droite {
+    text-align: end;
 }

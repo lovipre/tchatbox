@@ -85,40 +85,53 @@ function inscription(e){
     }
     
 }
+function $_GET(param) {
+	var vars = {};
+	window.location.href.replace( location.hash, '' ).replace( 
+		/[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+		function( m, key, value ) { // callback
+			vars[key] = value !== undefined ? value : '';
+		}
+	);
+	if ( param ) {
+		return vars[param] ? vars[param] : null;	
+	}
+	return vars;
+}
 function sendMessage(e){
     e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
     var message = $('#message').val();
+    var salle = $_GET('id_Salle');
+    var user = $_GET('id_User');
+
     if(message != ""){ // on vérifie que les variables ne sont pas vides
         $.ajax({
             url : "traitement.php", // on donne l'URL du fichier de traitement
             type : "POST", // la requête est de type POST
-            data : {message: message },
+            data : {message: message, salle: salle, user: user },
             dataType: 'json', 
             success: function(data){
                 if (data)
                 {
-                    console.log(data);
-                    for(var i=0; i < data.user.length; i++)
+                    if (data.user.Id == user)
                     {
-                        if (data.user[i].Id == 4)
-                        {
-                            $('#messages').append('<p class="gauche">'+data.user[i].Dialogue+'</p>');
-                            $('#messages').append('<p class="gauche">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
-                        }
-                        else
-                        {
-                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
-                            $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
-                        }
+                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'</p>');
+                            $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                     }
                 }
             }
         });
     }
 }
-
+function charger(){
+    
+}
 $(document).ready(function(){
     $("#connect").click(testlogs);
     $("#suscribe").click(inscription);
     $('#envoi').click(sendMessage);
+    if (window.location.href.match('salle.php?') != null)
+    {
+        charger();
+    }
 });
