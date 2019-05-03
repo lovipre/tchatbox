@@ -14,7 +14,13 @@ if($_POST && $_GET){
     // si le champ du formulaire est vide au moment du submit
     if ($nomSalle == '' ){
         //J'affiche un message d'erreur
-        echo("Erreur : Veuillez donner un nom à cette nouvelle discussion");
+
+        
+        $erreur == true ;
+        $message = "Erreur : Veuillez donner un nom à cette nouvelle discussion";
+        echo($message);
+
+
     //Sinon  
     } else {
         //je récupère les infos de la salle dans la base de données.
@@ -44,6 +50,9 @@ if($_POST && $_GET){
             //Redirection vers la page classe.php
             header("location: salle.php?id_Salle=".$_GET['id']."&id_User=".$result['Id']."");
             exit();
+
+            
+
 
         //Sinon, j'affiche un message d'erreur   
         } else {
