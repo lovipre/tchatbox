@@ -15,11 +15,9 @@ if($_POST && $_GET){
     if ($nomSalle == '' ){
         //J'affiche un message d'erreur
 
-        
         $erreur == true ;
         $message = "Erreur : Veuillez donner un nom à cette nouvelle discussion";
         echo($message);
-
 
     //Sinon  
     } else {
@@ -30,8 +28,6 @@ if($_POST && $_GET){
         //on récupère les infos retournées par la BDD sous forme de tableau 
         $result = $requete->fetch();
 
-
-        
         //Si le résultat n'est pas un tableau vide
         if (empty($result) == true){
 
@@ -39,20 +35,14 @@ if($_POST && $_GET){
             $requete= $pdo->prepare("INSERT INTO Salle(Id_CreateurSalle,NomSalle) VALUES (?,?)");
             $requete->execute([$_GET['id'],$nomSalle]);
 
-
             //Je récupère l'Id de la nouvelle discussion
             $requete = $pdo->prepare("SELECT Id FROM Salle WHERE NomSalle=?");
             $requete->execute([$nomSalle]);
             $result = $requete->fetch();
 
-
-
             //Redirection vers la page classe.php
             header("location: salle.php?id_Salle=".$_GET['id']."&id_User=".$result['Id']."");
             exit();
-
-            
-
 
         //Sinon, j'affiche un message d'erreur   
         } else {
@@ -63,4 +53,3 @@ if($_POST && $_GET){
     }
 }
 
-    //$_GET['id'];
