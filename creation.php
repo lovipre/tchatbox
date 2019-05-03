@@ -34,7 +34,17 @@ if($_POST && $_GET){
             $requete->execute([$_GET['id'],$nomSalle]);
 
 
-            
+            //Je récupère l'Id de la nouvelle discussion
+            $requete = $pdo->prepare("SELECT Id FROM Salle WHERE NomSalle=?");
+            $requete->execute([$nomSalle]);
+            $result = $requete->fetch();
+            var_dump($result);
+
+
+            //Redirection vers la page classe.php
+            header("location: classe.php?id_Salle=".$_GET['id'].",id_User=".$result['Id']."");
+
+
         //Sinon, j'affiche un message d'erreur   
         } else {
             echo("Erreur : Cette discussion existe déjà, merci de lui donner un nouveau nom");
