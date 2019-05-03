@@ -1,6 +1,6 @@
 <?php 
 include 'bdd.php';
-include "creation.phtml";
+
 
 if($_POST && $_GET){
 
@@ -14,7 +14,11 @@ if($_POST && $_GET){
     // si le champ du formulaire est vide au moment du submit
     if ($nomSalle == '' ){
         //J'affiche un message d'erreur
-        echo("Erreur : Veuillez donner un nom à cette nouvelle discussion");
+
+        $erreur == true ;
+        $message = "Erreur : Veuillez donner un nom à cette nouvelle discussion";
+        echo($message);
+
     //Sinon  
     } else {
         //je récupère les infos de la salle dans la base de données.
@@ -30,13 +34,10 @@ if($_POST && $_GET){
             $requete= $pdo->prepare("INSERT INTO Salle(Id_CreateurSalle,NomSalle) VALUES (?,?)");
             $requete->execute([$_GET['id'],$nomSalle]);
 
-
             //Je récupère l'Id de la nouvelle discussion
             $requete = $pdo->prepare("SELECT Id FROM Salle WHERE NomSalle=?");
             $requete->execute([$nomSalle]);
             $result = $requete->fetch();
-
-
 
             //Redirection vers la page classe.php
             header("location: salle.php?id_Salle=".$_GET['id']."&id_User=".$result['Id']."");
@@ -47,8 +48,6 @@ if($_POST && $_GET){
             echo("Erreur : Cette discussion existe déjà, merci de lui donner un nouveau nom");
         }
 
-
     }
 }
-
-    //$_GET['id'];
+include "creation.phtml";
