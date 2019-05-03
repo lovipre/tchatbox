@@ -85,9 +85,40 @@ function inscription(e){
     }
     
 }
+function sendMessage(e){
+    e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+    var message = $('#message').val();
+    if(message != ""){ // on vérifie que les variables ne sont pas vides
+        $.ajax({
+            url : "traitement.php", // on donne l'URL du fichier de traitement
+            type : "POST", // la requête est de type POST
+            data : {message: message },
+            dataType: 'json', 
+            success: function(data){
+                if (data)
+                {
+                    console.log(data);
+                    for(var i=0; i < data.user.length; i++)
+                    {
+                        if (data.user[i].Id == 4)
+                        {
+                            $('#messages').append('<p class="gauche">'+data.user[i].Dialogue+'</p>');
+                            $('#messages').append('<p class="gauche">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+                        }
+                        else
+                        {
+                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
+                            $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
 
 $(document).ready(function(){
     $("#connect").click(testlogs);
     $("#suscribe").click(inscription);
-
+    $('#envoi').click(sendMessage);
 });
