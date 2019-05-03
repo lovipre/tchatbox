@@ -1,2 +1,10 @@
 <?php 
-include "creation.phtml";
+
+echo $_POST['inputIdRoom'];
+
+
+
+
+
+
+?>
