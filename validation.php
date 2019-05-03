@@ -19,7 +19,6 @@ function hashPassword($password){
 function verifyPassword($password, $hashPassword){
     return crypt($password, $hashPassword) == $hashPassword;
 }
-
 if (array_key_exists('login', $_POST) && array_key_exists('password', $_POST) )
 {
     $requete = $pdo->prepare("
@@ -38,16 +37,19 @@ if (array_key_exists('login', $_POST) && array_key_exists('password', $_POST) )
         $data = ["validation"=> false];
         if (array_key_exists('cpassword', $_POST))
         {
+            
             $password = $_POST['password'];
             $hashPassword = hashPassword($password);
             $requete = $pdo->prepare("
             INSERT
             INTO
-            `user`(`Pseudo`,`Email`,
+            `User`(`Pseudo`,`Email`,
             `Password`)
             VALUES(?,?,?)
                 ");
             $requete->execute([$_POST['login'],$_POST['email'],$hashPassword]);
+            $lastId = $pdo->lastInsertId();
+            $data = ["validation"=> false, "id"=>$lastId];
         }
     }
     else

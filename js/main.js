@@ -15,7 +15,7 @@ function testlogs(e){
                     $('.form-access').attr('class','hide');
                     $('body').prepend('<p id="success">Connexion réussi</p>');
                     setTimeout(function(){
-                        window.location.href = "creation?id="+data.id;
+                        window.location.href = "creation.php?id="+data.id;
                     }, 3000); 
                     
                 }
@@ -46,7 +46,7 @@ function inscription(e){
                         $('.form-access').attr('class','hide');
                         $('body').prepend('<p id="success">Inscritpion réussi</p>');
                         setTimeout(function(){
-                            window.location.href = "creation?id="+data.id;
+                            window.location.href = "creation.php?id="+data.id;
                         }, 3000); 
                     }
                     else if (data.validation == true)
