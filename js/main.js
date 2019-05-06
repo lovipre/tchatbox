@@ -115,8 +115,7 @@ function sendMessage(e){
                 {
                     if (data.user.Id == user)
                     {
-                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'<br>Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
-                        
+                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'<br/>Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
                             var objDiv = $('#messages');
@@ -151,8 +150,8 @@ function charger(){
     
                         for (var i = 0; i < data.user.length; i++)     
                         {
-                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'<br>Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
-                           
+                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'<br/>Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
                             
                         }   
@@ -181,3 +180,5 @@ $(document).ready(function(){
         setInterval(charger, 2000); 
     }
 });
+
+
