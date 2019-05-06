@@ -42,12 +42,24 @@ function creerSalle(e){
                 dataType: 'json', 
                 success: function(data){
                     console.log(data);
+                    //Si data est différent de erreur
+                    if (data != "erreur"){
+                        //Je redirige vers la page salle.php
+                        window.location.replace("salle.php?id_Salle="+data[0]+"&id_User="+data[1]);
+
+                    } else {//sinon
+                        // J'affiche un message d'erreur
+                        $("#errorMessage").html("Erreur :<br> Cette discussion existe déjà. Saisissez un autre nom ou  cliquez sur rejoindre pour y accéder");
+                    }
+
                 },
                 error: function(){
-                    console.log('erreur');
+                    console.log('AJAX Erreur');
                 }
             });
         }
     }
 }
 
+
+   
