@@ -47,6 +47,11 @@ a {
     border-radius:4px;
     float:right;
     color:white;
+    padding: 15px;
+    margin:0px;
+   
+   
+    margin-right: 2em;
 }
 .droite{
     clear:both;
@@ -68,4 +73,10 @@ a {
     margin-top: 0px;
     margin-bottom: 7em;
     margin-left: 0.5em;
+}
+.droite{
+    margin-top: 0px;
+    margin-bottom: 7em;
+    margin-right: 0.5em;
+   
 }
