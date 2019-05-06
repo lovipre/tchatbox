@@ -127,7 +127,14 @@ function sendMessage(e){
     }
 }
 function charger(){
-    var idMess = $("#messages input:last-of-type").get(0).value;
+    if ($("#messages input:last-of-type").length)
+    {
+        var idMess = $("#messages input:last-of-type").get(0).value;
+    }
+    else
+    {
+        var idMess = 0;
+    }
     var salle = $_GET('id_Salle');
     var user = $_GET('id_User');
     $.ajax({
