@@ -115,8 +115,7 @@ function sendMessage(e){
                 {
                     if (data.user.Id == user)
                     {
-                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'</p>');
-                            $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
+                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'<br/>Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
                             var objDiv = $('#messages');
@@ -151,8 +150,8 @@ function charger(){
     
                         for (var i = 0; i < data.user.length; i++)     
                         {
-                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
-                            $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'<br/>Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
                             
                         }   
@@ -183,14 +182,3 @@ $(document).ready(function(){
 });
 
 
-// <?php for($i = 0; $i<count($tab); $i++): ?></input>
-//             <?php if($tab[$i]['Id'] == $_GET['id_User']): ?>
-//                 <p class="gauche"><?= $tab[$i]['Dialogue'] ?></p>
-//                 <p class="gauche">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
-//                 <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
-//             <?php else: ?>
-//                 <p class="droite"><?= $tab[$i]['Dialogue'] ?></p>
-//                 <p class="droite">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
-//                 <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
-//             <?php endif; ?>
-//             <?php endfor; ?>
