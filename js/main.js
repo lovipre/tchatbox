@@ -155,11 +155,13 @@ function charger(){
                             $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
                         }
-                        
-                        var objDiv = $('#messages');
-                        if (objDiv.length > 0){
-                            objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                        if(data.user.length>0){
+                            var objDiv = $('#messages');
+                            if (objDiv.length > 0){
+                                objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                            }
                         }
+                        
             }
         }
     });
