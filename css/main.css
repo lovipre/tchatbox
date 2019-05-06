@@ -32,6 +32,8 @@ a {
     display: none;
 }
 #messages {
+    clear:both;
+    display:block;
     width: 100%;
     height: 500px;
     box-shadow: 0 0 5px black;
@@ -39,11 +41,11 @@ a {
     overflow: auto;
 }
 .textdroite{
-    text-align: right;
+    clear:both;
     border: 1px solid #666;
     background: #666;
     border-radius:4px;
-    display:block;
+    float:right;
     color:white;
     padding: 15px;
     margin:0px;
@@ -51,7 +53,12 @@ a {
     justify-content: flex-end;
     margin-right: 2em;
 }
+.droite{
+    clear:both;
+    float:right;
+}
 .textgauche{
+
     border: 1px solid #05d3be;
     background:#05d3be; 
     color:white;
