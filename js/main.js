@@ -119,7 +119,10 @@ function sendMessage(e){
                             $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
-                            $("#messages").scrollTop(500);
+                            var objDiv = $('#messages');
+                            if (objDiv.length > 0){
+                                objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                            }
                     }
                 }
             }
@@ -158,10 +161,11 @@ function charger(){
     });
     
 }
-function scrollBottom(){
-      
-    $(document).height() - this.scrollTop() - this.height();
-}
+// function scrollBottom(){
+//     console.log('ok');
+//     return $(document).height() - this.scrollTop() - this.height();
+// };
+
 
 
 $(document).ready(function(){
@@ -170,7 +174,10 @@ $(document).ready(function(){
     $('#envoi').click(sendMessage);
     if (window.location.href.match('salle.php?') != null)
     {
-        $("#messages").scrollBottom();
+        var objDiv = $('#messages');
+        if (objDiv.length > 0){
+            objDiv[0].scrollTop = objDiv[0].scrollHeight;
+        }
         setInterval(charger, 2000); 
     }
 });
