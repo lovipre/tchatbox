@@ -16,9 +16,11 @@
             <?php if($tab[$i]['Id'] == $_GET['id_User']): ?>
                 <p class="gauche"><?= $tab[$i]['Dialogue'] ?></p>
                 <p class="gauche">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
+                <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
             <?php else: ?>
                 <p class="droite"><?= $tab[$i]['Dialogue'] ?></p>
                 <p class="droite">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
+                <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
             <?php endif; ?>
             <?php endfor; ?>
     </div>

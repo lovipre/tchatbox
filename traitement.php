@@ -27,6 +27,6 @@ if (empty($_POST) == false)
         ");
     $requete->execute([$_POST['salle'],$lastId]);
     $user = $requete->fetch();
-    $data = ["user"=> $user];
+    $data = ["user"=> $user, "mId"=>$lastId];
     echo json_encode($data);
 }

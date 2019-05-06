@@ -117,6 +117,9 @@ function sendMessage(e){
                     {
                             $('#messages').append('<p class="gauche">'+data.user.Dialogue+'</p>');
                             $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
+                            $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
+                            $('#message').val("");
+                            $("#messages").scrollTop(500);
                     }
                 }
             }
@@ -124,6 +127,27 @@ function sendMessage(e){
     }
 }
 function charger(){
+    var idMess = $("#messages input:last-of-type").get(0).value;
+    var salle = $_GET('id_Salle');
+    var user = $_GET('id_User');
+    $.ajax({
+        url : "affichage.php", // on donne l'URL du fichier de traitement
+        type : "POST", // la requête est de type POST
+        data : {idMess: idMess, salle: salle, user: user},
+        dataType: 'json', 
+        success: function(data){
+            if (data)
+            {
+    
+                        for (var i = 0; i < data.user.length; i++)     
+                        {
+                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
+                            $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+                            $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
+                        }     
+            }
+        }
+    });
     
 }
 $(document).ready(function(){
@@ -132,6 +156,7 @@ $(document).ready(function(){
     $('#envoi').click(sendMessage);
     if (window.location.href.match('salle.php?') != null)
     {
-        charger();
+        $("#messages").scrollTop(500);   
+        setInterval(charger, 2000); 
     }
 });
