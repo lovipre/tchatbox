@@ -119,7 +119,10 @@ function sendMessage(e){
                             $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
-                            $("#messages").scrollTop(500);
+                            var objDiv = $('#messages');
+                            if (objDiv.length > 0){
+                                objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                            }
                     }
                 }
             }
@@ -151,7 +154,12 @@ function charger(){
                             $('#messages').append('<p class="textdroite">'+data.user[i].Dialogue+'</p>');
                             $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
-                        }     
+                        }
+                        
+                        var objDiv = $('#messages');
+                        if (objDiv.length > 0){
+                            objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                        }
             }
         }
     });
@@ -163,7 +171,10 @@ $(document).ready(function(){
     $('#envoi').click(sendMessage);
     if (window.location.href.match('salle.php?') != null)
     {
-        $("#messages").scrollTop(500);   
+        var objDiv = $('#messages');
+        if (objDiv.length > 0){
+            objDiv[0].scrollTop = objDiv[0].scrollHeight;
+        }
         setInterval(charger, 2000); 
     }
 });
