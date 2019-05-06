@@ -115,7 +115,7 @@ function sendMessage(e){
                 {
                     if (data.user.Id == user)
                     {
-                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'<br/>Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
+                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'<br/><strong>Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</strong></p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
                             var objDiv = $('#messages');

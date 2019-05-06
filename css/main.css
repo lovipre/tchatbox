@@ -40,12 +40,16 @@ a {
 }
 .droite {
     text-align: end;
-    border: 1px solid rgb(72, 255, 0);
-   
+    border: 1px solid green;
+    background: green;
     border-radius:4px;
+    color:white;
 }
 .gauche{
     border: 1px solid blue;
+    background:blue; 
+    color:white;
+    padding: 5px;
     width : 30%;
     border-radius:4px;
 }
