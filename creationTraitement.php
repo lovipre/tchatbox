@@ -1,7 +1,7 @@
 <?php 
 include 'bdd.php';
 
-var_dump($_POST);
+
 
 // je récupère le nom de la discussion, je le met en majuscule et le stock dans une variable.
 $nomSalle = strtoupper($_POST['nomDiscussion']);
@@ -17,7 +17,8 @@ $requete->execute([$nomSalle]);
 $result = $requete->fetch();
 var_dump($result);
 
-/*
+
+
 //Si le résultat est un tableau vide (=pas de salle avec ce nom dans bdd)
 if (empty($result) == true){
 
@@ -26,19 +27,21 @@ if (empty($result) == true){
     $requete->execute([$_POST['userId'],$nomSalle]);
 
     //Je récupère l'Id de la nouvelle discussion
+    var_dump($nomSalle);
     $requete = $pdo->prepare("SELECT Id FROM Salle WHERE NomSalle=?");
     $requete->execute([$nomSalle]);
     $result = $requete->fetch();
+    var_dump($result);
 
     //Redirection vers la page classe.php
-    header("location: salle.php?id_Salle=".$result['Id']."&id_User=".$_POST['userId']."");
-    exit();
+    /*header("location: salle.php?id_Salle=".$result['Id']."&id_User=".$_POST['userId']."");
+    exit();*/
 
-//Sinon, j'affiche un message d'erreur   
+//Sinon, j'affiche un message d'erreur
 } else {
-    echo("Erreur : Cette discussion existe déjà, merci de lui donner un nouveau nom");
+    echo json_encode("erreur" );
 }
-*/
+
 
 
 
