@@ -53,17 +53,18 @@ a {
     float:right;
 }
 .textgauche{
-
+    float:left;
     border: 1px solid #05d3be;
     background:#05d3be; 
     color:white;
     padding: 15px;
-    display:inline-block;
+    
     border-radius:4px;
     margin:0px;
     margin-left: 2em;
 }
 .gauche{
+    clear:both;
     margin-top: 0px;
     margin-bottom: 7em;
     margin-left: 0.5em;
