@@ -144,19 +144,26 @@ function charger(){
                             $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
                             $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
-                        }     
+                            
+                        }   
             }
         }
     });
     
 }
+function scrollBottom(){
+      
+    $(document).height() - this.scrollTop() - this.height();
+}
+
+
 $(document).ready(function(){
     $("#connect").click(testlogs);
     $("#suscribe").click(inscription);
     $('#envoi').click(sendMessage);
     if (window.location.href.match('salle.php?') != null)
     {
-        $("#messages").scrollTop(500);   
+        $("#messages").scrollBottom();
         setInterval(charger, 2000); 
     }
 });
