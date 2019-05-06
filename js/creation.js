@@ -6,13 +6,10 @@ $(document).ready(function(){
     $("#rejoindre").click(rejoindreSalle);
 });
 
-
 function rejoindreSalle(e){
     //j'annule l'action par défaut du submit
     e.preventDefault();
     
-    
-
     //si l'url ne contient pas l'id de l'utilisateur
     if ( $_GET('id') == null ){
         //J'affiche un message d'erreur
@@ -22,11 +19,13 @@ function rejoindreSalle(e){
         //je cache le boutton du formulaire
         $("#creation").addClass("hide");
         //je modifie le lien pour rediriger vers la page de connexion
-        $("#rejoindre").attr('href','index.php');
+        $("#identifier").attr('href','index.php');
         //je change le texte du lien
-        $("#rejoindre").html("S'identifier");
-
-        
+        $("#identifier").html("S'identifier");
+        //J'affiche le bouton s'identifier
+        $("#identifier").removeClass("hide");
+        //Je cache le bouton rejoindre discussion
+        $("#rejoindre").addClass("hide");
 
     } else {
         //je stock l'id dans une variable
@@ -49,6 +48,7 @@ function rejoindreSalle(e){
                 success: function(data){
                     console.log("ok");
                     console.log(data);
+                    //Je redirige vers lsalle avec l'id correspondant
                     window.location.replace("salle.php?id_Salle="+data[0]+"&id_User="+data[1]);
 
                 }
@@ -71,9 +71,14 @@ function creerSalle(e){
         //je cache le boutton du formulaire
         $("#creation").addClass("hide");
         //je modifie le lien pour rediriger vers la page de connexion
-        $("#rejoindre").attr('href','index.php');
+        $("#identifier").attr('href','index.php');
         //je change le texte du lien
-        $("#rejoindre").html("S'identifier");
+        $("#identifier").html("S'identifier");
+        //J'affiche le bouton s'identifier
+        $("#identifier").removeClass("hide");
+        //Je cache le bouton rejoindre discussion
+        $("#rejoindre").addClass("hide");
+        
 
     } else {
         //je stock l'id dans une variable
