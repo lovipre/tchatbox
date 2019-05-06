@@ -10,13 +10,13 @@
     
 </head>
 <body>
-    <form class="form-access" method="post" action="creation.php?id=<?= $_GET['id']; ?>">
+    <form class="form-access" >
         <h1><i class="fas fa-lock"></i> Création d'une discussion</h1>
-        <input type="hidden" id="fail" value="message erreur"></p>
+        <p id="errorMessage"></p>
         <input type="text" id="inputIdRoom" name="inputIdRoom" placeholder="Nom de la Discussion">
 
-        <button type="submit" id="rejoindre">Créer salle</button>
-        <a href="rejoindre.php" id="creation">Rejoindre discussion</a>
+        <button type="submit" id="creation">Créer salle</button>
+        <a href="rejoindre.php" id="rejoindre">Rejoindre discussion</a>
     </form>
     <script src="js/jquery-3.4.0.min.js"></script>
     <script src="js/main.js"></script>
