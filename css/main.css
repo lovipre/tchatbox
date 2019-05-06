@@ -38,18 +38,26 @@ a {
     margin-bottom: 3%;
     overflow: auto;
 }
-.droite {
-    text-align: end;
-    border: 1px solid green;
-    background: green;
+.textdroite{
+    text-align: right;
+    border: 1px solid #666;
+    background: #666;
     border-radius:4px;
+    
     color:white;
 }
-.gauche{
-    border: 1px solid blue;
-    background:blue; 
+.textgauche{
+    border: 1px solid #05d3be;
+    background:#05d3be; 
     color:white;
-    padding: 5px;
-    width : 30%;
+    padding: 15px;
+    display:inline-block;
     border-radius:4px;
+    margin:0px;
+    margin-left: 2em;
+}
+.gauche{
+    margin-top: 0px;
+    margin-bottom: 7em;
+    margin-left: 0.5em;
 }

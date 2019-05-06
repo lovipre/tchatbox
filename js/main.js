@@ -115,7 +115,7 @@ function sendMessage(e){
                 {
                     if (data.user.Id == user)
                     {
-                            $('#messages').append('<p class="gauche">'+data.user.Dialogue+'</p>');
+                            $('#messages').append('<p class="textgauche">'+data.user.Dialogue+'</p>');
                             $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
@@ -148,7 +148,7 @@ function charger(){
     
                         for (var i = 0; i < data.user.length; i++)     
                         {
-                            $('#messages').append('<p class="droite">'+data.user[i].Dialogue+'</p>');
+                            $('#messages').append('<p class="textdroite">'+data.user[i].Dialogue+'</p>');
                             $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
                         }     
