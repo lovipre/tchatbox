@@ -43,8 +43,13 @@ a {
     border: 1px solid #666;
     background: #666;
     border-radius:4px;
-    
+    display:block;
     color:white;
+    padding: 15px;
+    margin:0px;
+    display :flex;
+    justify-content: flex-end;
+    margin-right: 2em;
 }
 .textgauche{
     border: 1px solid #05d3be;
@@ -60,4 +65,11 @@ a {
     margin-top: 0px;
     margin-bottom: 7em;
     margin-left: 0.5em;
+}
+.droite{
+    margin-top: 0px;
+    margin-bottom: 7em;
+    margin-right: 0.5em;
+    display :flex;
+    justify-content: flex-end;
 }
