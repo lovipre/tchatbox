@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 06 Mai 2019 à 09:37
+-- Généré le :  Mar 07 Mai 2019 à 11:34
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.33-0ubuntu0.16.04.4
 
@@ -51,11 +51,7 @@ CREATE TABLE `Salle` (
 --
 
 INSERT INTO `Salle` (`Id`, `NomSalle`, `Id_CreateurSalle`) VALUES
-(3, 'Discussion', 1),
-(13, 'SALUT-MON-POTE', 1),
-(14, 'HGFIOZDGHIUOL', 1),
-(15, 'DSXADZXD', 1),
-(16, 'HTEBVGFER', 1);
+(33, 'DISCUSSION', 3);
 
 -- --------------------------------------------------------
 
@@ -75,7 +71,34 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`Id`, `Pseudo`, `Email`, `Password`) VALUES
-(1, 'Machin', 'machin@gmail.com', '$2y$11$7acea7dfa210a26a6bad6uV5hvVp/HCPZ8431TcV6.DGJRnYqTEJ6');
+(1, 'Machin', 'machin@gmail.com', '$2y$11$7acea7dfa210a26a6bad6uV5hvVp/HCPZ8431TcV6.DGJRnYqTEJ6'),
+(2, 'lulu', 'lulu@gmail.com', '$2y$11$ee3f02cb1711bf0d5a584ur0ODkNteAKSqicTuP3YiSNZd6kqkKMq'),
+(3, 'toto', 'toto@gmail.com', '$2y$11$dc6e39ee8d1615fedd100uVw/WuwFtZI8v8jxy1jBuXbgv8JtYZxy');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `UserSalle`
+--
+
+CREATE TABLE `UserSalle` (
+  `Id_UserSalle` smallint(5) NOT NULL,
+  `Id_Salle` smallint(5) NOT NULL,
+  `Id_User` smallint(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `UserSalle`
+--
+
+INSERT INTO `UserSalle` (`Id_UserSalle`, `Id_Salle`, `Id_User`) VALUES
+(16, 33, 3),
+(17, 33, 1),
+(18, 33, 1),
+(19, 33, 1),
+(20, 33, 1),
+(21, 33, 1),
+(22, 33, 1);
 
 --
 -- Index pour les tables exportées
@@ -105,6 +128,14 @@ ALTER TABLE `User`
   ADD UNIQUE KEY `Pseudo` (`Pseudo`);
 
 --
+-- Index pour la table `UserSalle`
+--
+ALTER TABLE `UserSalle`
+  ADD PRIMARY KEY (`Id_UserSalle`),
+  ADD KEY `Id_Salle` (`Id_Salle`),
+  ADD KEY `Id_User` (`Id_User`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -112,17 +143,22 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT pour la table `Contenu`
 --
 ALTER TABLE `Contenu`
-  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT pour la table `Salle`
 --
 ALTER TABLE `Salle`
-  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT pour la table `User`
 --
 ALTER TABLE `User`
-  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `UserSalle`
+--
+ALTER TABLE `UserSalle`
+  MODIFY `Id_UserSalle` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Contraintes pour les tables exportées
 --
@@ -139,6 +175,13 @@ ALTER TABLE `Contenu`
 --
 ALTER TABLE `Salle`
   ADD CONSTRAINT `Salle_ibfk_1` FOREIGN KEY (`Id_CreateurSalle`) REFERENCES `User` (`Id`);
+
+--
+-- Contraintes pour la table `UserSalle`
+--
+ALTER TABLE `UserSalle`
+  ADD CONSTRAINT `UserSalle_ibfk_1` FOREIGN KEY (`Id_User`) REFERENCES `User` (`Id`),
+  ADD CONSTRAINT `UserSalle_ibfk_2` FOREIGN KEY (`Id_Salle`) REFERENCES `Salle` (`Id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -26,18 +26,19 @@ for ($i=0;$i<count($infosParticipants);$i++){
     
     //si le tableau contient l'id de l'utilisateur dans la colonne des participants
     if (($infosParticipants[$i]['Id_User'])==($_POST['userId'])){
-
+        break;
         //L'utilisateur est déjà présent dans la discussion
-        echo json_encode([$infosSalle]);
+        
     // sinon
     } else{
-        var_dump($infosSalle['Id'],$_POST['userId']);
+        
         //Je l'ajoute en tant que participant à la discussion
         $requete= $pdo->prepare("INSERT INTO UserSalle(Id_Salle,Id_User) VALUES (?,?)");
         $requete->execute([$infosSalle['Id'],$_POST['userId']]);
-        echo json_encode([$infosSalle]);
+        break;
     }
 }
+echo json_encode([$infosSalle]);
 
 
 
