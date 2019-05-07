@@ -28,11 +28,9 @@ function afficherParticipants(){
             //l'appel AJAX me retourne un tableau data
 
             //Pour chaque ligne du tableau 
-            for (var i=0;)
-
-            
-        
-        
+            for (var i=0;i<data.length;i++){
+                $(".discussions").append('<p>'+data[i]['NomSalle']+'</p>');
+            }
         },
         error: function(){
             console.log("erreur Ajax");
