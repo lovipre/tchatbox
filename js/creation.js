@@ -59,7 +59,7 @@ function afficherSalles(){
 
             //Pour chaque ligne du tableau 
             for (var i=0;i<data.length;i++){
-                $(".discussions").append('<p>'+data[i]['NomSalle']+'</p>');
+                $(".discussions").append('<a href="salle.php?id_Salle='+data[i]['Id']+'&id_User='+userId+'">'+data[i]['NomSalle']+'</a><br>');
             }
         },
         error: function(){

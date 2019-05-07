@@ -20,7 +20,7 @@ for ($i=0;$i<count($discussions);$i++){
 if (count($idSalle)>=0){
     //pour chaque ligne, je fais une requete sql pour récupérer le nom de la salle correspondant à l'Id
     for($i=0;$i<count($idSalle);$i++){
-        $requete= $pdo->prepare("SELECT NomSalle FROM Salle WHERE Id=?");
+        $requete= $pdo->prepare("SELECT NomSalle,Id FROM Salle WHERE Id=?");
         $requete->execute([$idSalle[$i]]);
         $nomSalle = $requete->fetch();
         array_push($nomSalles, $nomSalle);
