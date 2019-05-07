@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 07 Mai 2019 à 12:12
+-- Généré le :  Mar 07 Mai 2019 à 12:17
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.33-0ubuntu0.16.04.4
 
@@ -34,6 +34,11 @@ CREATE TABLE `Contenu` (
   `Id_Salle` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `Contenu`
+--
+
+TRUNCATE TABLE `Contenu`;
 -- --------------------------------------------------------
 
 --
@@ -46,6 +51,11 @@ CREATE TABLE `Salle` (
   `Id_CreateurSalle` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `Salle`
+--
+
+TRUNCATE TABLE `Salle`;
 --
 -- Contenu de la table `Salle`
 --
@@ -67,6 +77,11 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Vider la table avant d'insérer `User`
+--
+
+TRUNCATE TABLE `User`;
+--
 -- Contenu de la table `User`
 --
 
@@ -87,6 +102,11 @@ CREATE TABLE `UserSalle` (
   `Id_User` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Vider la table avant d'insérer `UserSalle`
+--
+
+TRUNCATE TABLE `UserSalle`;
 --
 -- Contenu de la table `UserSalle`
 --
