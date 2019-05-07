@@ -116,7 +116,7 @@ function sendMessage(e){
                     if (data.user.Id == user)
                     {
                             $('#messages').append('<p class="textgauche">'+data.user.Dialogue+'</p>');
-                            $('#messages').append('<p class="gauche">Ecrit par '+data.user.Pseudo+' le '+data.user.Date+'</p>');
+                            $('#messages').append('<p class="gauche"><em>Ecrit par</em><strong> '+data.user.Pseudo+' </strong><em>le '+data.user.Date+'</em></p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.mId+'">');
                             $('#message').val("");
                             var objDiv = $('#messages');
@@ -152,7 +152,7 @@ function charger(){
                         for (var i = 0; i < data.user.length; i++)     
                         {
                             $('#messages').append('<p class="textdroite">'+data.user[i].Dialogue+'</p>');
-                            $('#messages').append('<p class="droite">Ecrit par '+data.user[i].Pseudo+' le '+data.user[i].Date+'</p>');
+                            $('#messages').append('<p class="droite"><em>Ecrit par</em><strong> '+data.user[i].Pseudo+' </strong><em>le '+data.user[i].Date+'</em></p>');
                             $('#messages').append('<input class="idMessage" name="idMessage" type="hidden" value="'+data.user[i].idMessage+'">');
                         }
                         if(data.user.length>0){

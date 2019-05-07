@@ -10,27 +10,29 @@
     
 </head>
 <body>
-    <div id="messages">
-                <!-- les messages du tchat -->
-            <?php for($i = 0; $i<count($tab); $i++): ?>
-            <?php if($tab[$i]['Id'] == $_GET['id_User']): ?>
-                <p class="textgauche"><?= $tab[$i]['Dialogue'] ?></p>
-                <p class="gauche">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
-                <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
-            <?php else: ?>
-            
-                <p class="textdroite"><?= $tab[$i]['Dialogue'] ?></p>
-                <p class="droite">Ecrit par <?= $tab[$i]['Pseudo'] ?> le <?= $tab[$i]['Date'] ?></p>
-                <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
-            
-            <?php endif; ?>
-            <?php endfor; ?>
-    </div>
+    <div class="chtat">
+        <div id="messages">
+                    <!-- les messages du tchat -->
+                <?php for($i = 0; $i<count($tab); $i++): ?>
+                <?php if($tab[$i]['Id'] == $_GET['id_User']): ?>
+                    <p class="textgauche"><?= $tab[$i]['Dialogue'] ?></p>
+                    <p class="gauche"><em>Ecrit par</em> <strong><?= $tab[$i]['Pseudo'] ?></strong><em> le <?= $tab[$i]['Date'] ?></em></p>
+                    <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
+                <?php else: ?>
+                
+                    <p class="textdroite"><?= $tab[$i]['Dialogue'] ?></p>
+                    <p class="droite"><em>Ecrit par</em> <strong><?= $tab[$i]['Pseudo'] ?></strong><em> le <?= $tab[$i]['Date'] ?></em></p>
+                    <input class="idMessage" name="idMessage" type="hidden" value="<?= $tab[$i]['mId'] ?>">
+                
+                <?php endif; ?>
+                <?php endfor; ?>
+        </div>
 
-    <form method="POST" action="traitement.php">
-        Message : <textarea row="5" cols="100" name="message" id="message"></textarea><br />
-        <input type="submit" name="submit" value="Envoyez votre message !" id="envoi" />
-    </form>
+        <form method="POST" class="formMessage" action="traitement.php">
+            <textarea row="5" class="textMessage" cols="100" name="message" id="message"></textarea><br />
+            <input type="submit" class="envoimessage" name="submit" value="Envoyez votre message !" id="envoi" />
+        </form>
+    </div>
     <script src="js/jquery-3.4.0.min.js"></script>
     <script src="js/main.js"></script>
 </body>
