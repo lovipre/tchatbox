@@ -6,7 +6,40 @@ $(document).ready(function(){
     $("#rejoindre").click(redirection);
     $("#boutonRejoindre").click(rejoindreSalle);
     $("#lienCreation").click(redirectionCreer);
+    afficherParticipants();
 });
+
+
+function afficherParticipants(){
+    //je stock les id dans des variables
+    var userId = $_GET('id_User');
+    var salleId = $_GET ('id_Salle');
+    console.log(userId,salleId);
+
+    //Je fais un appel AJAX
+    $.ajax({
+        url: "participantTraitement.php",//url de la page
+        method: 'post',
+        data: {userId:userId, salleId:salleId},
+        dataType: 'json', 
+        success: function(data){
+            console.log("ok");
+            console.log(data);
+            //l'appel AJAX me retourne un tableau data
+
+            //Pour chaque ligne du tableau 
+            for (var i=0;)
+
+            
+        
+        
+        },
+        error: function(){
+            console.log("erreur Ajax");
+        }
+    });
+
+}
 
 function redirectionCreer(e){
     e.preventDefault();
@@ -18,14 +51,11 @@ function redirectionCreer(e){
         //J'affiche un message d'erreur
         $("#errorMessage").html("Oups, <br> désolé, je ne vous ai pas reconnu...<br> il faut commencer par vous identifier");
         
-
     } else{
         //Je redirige vers la salle avec l'id correspondant
     window.location.replace("creation.php?id="+userId);
     }
-
 }
-
 
 function redirection(e){
     e.preventDefault();
@@ -41,13 +71,11 @@ function redirection(e){
         //Je redirige vers la salle avec l'id correspondant
     window.location.replace("rejoindre.php?id="+userId);
     }
-    
 }
 
 
 function rejoindreSalle(e){
     e.preventDefault();
-    //je stock l'id dans une variable
     
         //je stock l'id dans une variable
         var userId = $_GET('id');
@@ -77,7 +105,6 @@ function rejoindreSalle(e){
                 }
             });
         }
-    
 }
 
 

@@ -14,12 +14,10 @@ $requete->execute([$nomSalle]);
 //je les stocke dans une variable sous forme de tableau 
 $infosSalle = $requete->fetch();
 
-
 //Je récupère les infos des participants dans userSalle
 $requete= $pdo->prepare("SELECT * FROM UserSalle WHERE Id_Salle=?");
 $requete->execute([$infosSalle['Id']]);
 $infosParticipants = $requete->fetchAll();
-
 
 //je vérifie si l'utilisateur participe déjà à la discussion
 for ($i=0;$i<count($infosParticipants);$i++){
@@ -28,13 +26,14 @@ for ($i=0;$i<count($infosParticipants);$i++){
     if ($infosParticipants[$i]['Id_User'] == $_POST['userId']){
         //L'utilisateur est déjà présent dans la discussion
         $presenceParticipant = true;
+        continue;
         
-
     // sinon
     } else{
         $presenceParticipant = false;
     }
 };
+
 if($presenceParticipant == false){
     //Je l'ajoute en tant que participant à la discussion
     $requete= $pdo->prepare("INSERT INTO UserSalle(Id_Salle,Id_User) VALUES (?,?)");
