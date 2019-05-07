@@ -163,3 +163,33 @@ form{
     display: flex;
     justify-content: space-around;
 }
+.participants h2{
+    color:#666;
+    border:2px groove rgba(172, 170, 170, 0.411);
+    padding: 4px;
+    background: #51bcd5;
+    margin-top: 0;
+}
+.discussions h2{
+    color:#666;
+    border:2px groove rgba(172, 170, 170, 0.411);
+    padding: 4px;
+    background: #51bcd5;
+    margin-top: 0;
+}
+.discussions{
+    color:white;
+    border:2px groove rgba(172, 170, 170, 0.411);
+    padding: 4px;
+    background: #666;
+    padding: 15px;
+    border-radius: 15px;
+}
+.participants{
+    color:white;
+    border:2px groove rgba(172, 170, 170, 0.411);
+    padding: 4px;
+    background: #666;
+    padding: 15px;
+    border-radius: 15px;
+}
