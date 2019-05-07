@@ -1,14 +1,26 @@
 'use strict'
 //au chargement de la page
 $(document).ready(function(){
-    //je mets un gestionnaire d'événement sur le boutton du formulaire
+    //je mets un gestionnaire d'événement sur les bouttons des differentes pages
     $("#creation").click(creerSalle);
     $("#rejoindre").click(redirection);
     $("#boutonRejoindre").click(rejoindreSalle);
     $("#lienCreation").click(redirectionCreer);
     afficherSalles();
     afficherparticipants();
+    $("#newDiscussion").click(retourCreerSalle);
 });
+
+function retourCreerSalle(e){
+    e.preventDefault();
+    //je stock les id dans des variables
+    var userId = $_GET('id_User');
+    var salleId = $_GET ('id_Salle');
+    console.log(userId,salleId);
+
+    //Je redirige vers page creation
+    window.location.replace("creation.php?id="+userId);
+}
 
 function afficherparticipants(){
     //je stock les id dans des variables
@@ -59,7 +71,7 @@ function afficherSalles(){
 
             //Pour chaque ligne du tableau 
             for (var i=0;i<data.length;i++){
-                $(".discussions").append('<a href="salle.php?id_Salle='+data[i]['Id']+'&id_User='+userId+'">'+data[i]['NomSalle']+'</a><br>');
+                $(".discussions").append('<a class="salle" href="salle.php?id_Salle='+data[i]['Id']+'&id_User='+userId+'">'+data[i]['NomSalle']+'</a><br>');
             }
         },
         error: function(){
@@ -125,7 +137,7 @@ function rejoindreSalle(e){
                 success: function(data){
                     console.log("ok");
                     console.log(data);
-                    
+
                     //Je redirige vers l asalle avec l'id correspondant
                     window.location.replace("salle.php?id_Salle="+data[0]['Id']+"&id_User="+userId);
                     

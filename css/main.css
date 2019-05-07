@@ -7,7 +7,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 5px black;
     padding: 2%;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 .form-access button, .form-access input{
     width: 50%;
@@ -25,8 +25,16 @@ button {
 h1 {
     color: #51bcd5;
 }
+h3{
+    text-align:center;
+    color:white;
+    font-size: 2rem;
+    margin-top: 5%;
+}
 a {
     color: #51bcd5;
+    
+    text-decoration: none;
 }
 .hide {
     display: none;
@@ -128,8 +136,7 @@ a {
 }
 .chtat #messages{
     width: 50%;
-}
-#messages{
+    margin-right:2%;
     background: rgba(172, 170, 170, 0.411);
 }
 .textMessage{
@@ -185,6 +192,7 @@ form{
     padding: 15px;
     border-radius: 15px;
 }
+
 .participants{
     color:white;
     border:2px groove rgba(172, 170, 170, 0.411);
@@ -192,4 +200,21 @@ form{
     background: #666;
     padding: 15px;
     border-radius: 15px;
+}
+#newDiscussion{
+    margin-top:2%;
+    background:  #51bcd5;
+    color:white;
+    border:0px;
+    padding: 6px;
+    border-radius: 5px;
+}
+#salons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.salle{
+    color:white;
 }

@@ -125,6 +125,7 @@ function sendMessage(e){
                             if (objDiv.length > 0){
                                 objDiv[0].scrollTop = objDiv[0].scrollHeight;
                             }
+                           
                     }
                 }
             }
@@ -161,7 +162,9 @@ function charger(){
                             var objDiv = $('#messages');
                             if (objDiv.length > 0){
                                 objDiv[0].scrollTop = objDiv[0].scrollHeight;
+                                
                             }
+                           
                         }
                         
             }
