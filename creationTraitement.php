@@ -28,6 +28,11 @@ if (empty($result) == true){
     $result = $requete->fetch();
     
 
+    //Je crée un nouvel utilisateur dans la table UserSalle
+    $requete= $pdo->prepare("INSERT INTO UserSalle(Id_Salle,Id_User) VALUES (?,?)");
+    $requete->execute([$result['Id'],$_POST['userId']]);
+
+
     //Redirection vers la page classe.php
     echo json_encode([$result['Id'],$_POST['userId']]);
 

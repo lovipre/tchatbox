@@ -12,7 +12,35 @@ $nomSalle = str_replace(" ","-",$nomSalle);
 $requete= $pdo->prepare("SELECT * FROM Salle WHERE NomSalle=?");
 $requete->execute([$nomSalle]);
 //je les stocke dans une variable sous forme de tableau 
-$result = $requete->fetch();
+$infosSalle = $requete->fetch();
 
 
-echo json_encode([$result]);
+//Je récupère les infos des participants dans userSalle
+$requete= $pdo->prepare("SELECT * FROM UserSalle WHERE Id_Salle=?");
+$requete->execute([$infosSalle['Id']]);
+$infosParticipants = $requete->fetchAll();
+
+
+//je vérifie si l'utilisateur participe déjà à la discussion
+for ($i=0;$i<count($infosParticipants);$i++){
+    
+    //si le tableau contient l'id de l'utilisateur dans la colonne des participants
+    if (($infosParticipants[$i]['Id_User'])==($_POST['userId'])){
+
+        //L'utilisateur est déjà présent dans la discussion
+        echo json_encode([$infosSalle]);
+    // sinon
+    } else{
+        var_dump($infosSalle['Id'],$_POST['userId']);
+        //Je l'ajoute en tant que participant à la discussion
+        $requete= $pdo->prepare("INSERT INTO UserSalle(Id_Salle,Id_User) VALUES (?,?)");
+        $requete->execute([$infosSalle['Id'],$_POST['userId']]);
+        echo json_encode([$infosSalle]);
+    }
+}
+
+
+
+
+
+
