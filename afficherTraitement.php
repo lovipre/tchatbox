@@ -6,7 +6,6 @@ $requete = $pdo->prepare("SELECT * FROM UserSalle WHERE Id_Salle=?");
 $requete->execute([$_POST['salleId']]);
 $participants= $requete->fetchall();
 
-
 $idParticipant=[];
 $nomParticipants=[];
 //pour chaque ligne du tableau $participants
@@ -14,7 +13,6 @@ for ($i=0;$i<count($participants);$i++){
     //Je stock l'Id du participant dans le tableau $idParticipant
     array_push($idParticipant,$participants[$i]['Id_User'] );
 }
-
 
 //Si le tableau contient au moins une ligne 
 if (count($idParticipant)>=0){
