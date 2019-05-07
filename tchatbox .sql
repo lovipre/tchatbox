@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 07 Mai 2019 à 11:34
+-- Généré le :  Mar 07 Mai 2019 à 12:12
 -- Version du serveur :  5.7.25-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.33-0ubuntu0.16.04.4
 
@@ -93,12 +93,7 @@ CREATE TABLE `UserSalle` (
 
 INSERT INTO `UserSalle` (`Id_UserSalle`, `Id_Salle`, `Id_User`) VALUES
 (16, 33, 3),
-(17, 33, 1),
-(18, 33, 1),
-(19, 33, 1),
-(20, 33, 1),
-(21, 33, 1),
-(22, 33, 1);
+(31, 33, 1);
 
 --
 -- Index pour les tables exportées
@@ -158,7 +153,7 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT pour la table `UserSalle`
 --
 ALTER TABLE `UserSalle`
-  MODIFY `Id_UserSalle` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Id_UserSalle` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- Contraintes pour les tables exportées
 --
