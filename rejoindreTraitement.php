@@ -26,7 +26,9 @@ for ($i=0;$i<count($infosParticipants);$i++){
     if ($infosParticipants[$i]['Id_User'] == $_POST['userId']){
         //L'utilisateur est déjà présent dans la discussion
         $presenceParticipant = true;
-        continue;
+        echo json_encode([$infosSalle]);
+        return ;
+        
         
     // sinon
     } else{

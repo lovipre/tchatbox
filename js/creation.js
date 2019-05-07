@@ -6,11 +6,15 @@ $(document).ready(function(){
     $("#rejoindre").click(redirection);
     $("#boutonRejoindre").click(rejoindreSalle);
     $("#lienCreation").click(redirectionCreer);
-    afficherParticipants();
+    afficherSalles();
 });
+function afficherparticipants(){
+    
+}
 
 
-function afficherParticipants(){
+
+function afficherSalles(){
     //je stock les id dans des variables
     var userId = $_GET('id_User');
     var salleId = $_GET ('id_Salle');
