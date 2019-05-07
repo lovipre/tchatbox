@@ -159,3 +159,7 @@ form{
 .formMessage{
     background: rgb(223, 220, 220);
 }
+.doc{
+    display: flex;
+    justify-content: space-around;
+}
